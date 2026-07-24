@@ -4,7 +4,6 @@ import asyncHandler from '../utils/asyncHandler.js';
 import { config } from '../config/env.config.js';
 import { ROLES } from '../constants/index.js';
 
-
 export const verifyJWT = asyncHandler(async (req, res, next) => {
   try {
     const token = req.cookies?.accessToken || req.header('Authorization')?.replace('Bearer ', '');
@@ -14,9 +13,7 @@ export const verifyJWT = asyncHandler(async (req, res, next) => {
     }
 
     const decodedToken = jwt.verify(token, config.jwtSecret);
-    
-    // We attach the decoded user info directly to req.user. 
-    // In the controller, we can query the DB if we need full user details.
+
     req.user = decodedToken;
     next();
   } catch (error) {
@@ -24,11 +21,6 @@ export const verifyJWT = asyncHandler(async (req, res, next) => {
   }
 });
 
-/**
- * Middleware for Role-Based Access Control (RBAC).
- * Use this AFTER verifyJWT to restrict routes to specific roles.
- * @param {...string} roles - Allowed roles (e.g., ROLES.STUDENT, ROLES.ADMIN)
- */
 export const authorizeRoles = (...roles) => {
   return (req, res, next) => {
     if (!req.user || !roles.includes(req.user.role)) {
@@ -38,7 +30,6 @@ export const authorizeRoles = (...roles) => {
   };
 };
 
-// Convenience Middlewares
 export const isStudent = authorizeRoles(ROLES.STUDENT);
 export const isOrganizer = authorizeRoles(ROLES.ORGANIZER);
 export const isAdmin = authorizeRoles(ROLES.ADMIN);

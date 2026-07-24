@@ -3,7 +3,6 @@ import { organizerRepository } from '../repositories/OrganizerRepository.js';
 import ApiError from '../utils/ApiError.js';
 import { generateAccessAndRefreshTokens } from '../helpers/token.helper.js';
 
-
 class AuthService {
   async registerStudent(studentData) {
     const existingStudent = await studentRepository.checkExists(studentData.email, studentData.rollNumber);
@@ -12,7 +11,7 @@ class AuthService {
     }
     
     const student = await studentRepository.create(studentData);
-    student.password = undefined; // Remove password from response
+    student.password = undefined;
     return student;
   }
 
@@ -23,9 +22,7 @@ class AuthService {
     const isPasswordValid = await student.isPasswordCorrect(password);
     if (!isPasswordValid) throw new ApiError(401, 'Invalid email or password');
     
-    const { accessToken, refreshToken } = generateAccessAndRefreshTokens(student._id, student.role);
-    
-    // Save refresh token to DB for rotation/logout
+    const { accessToken, refreshToken } = generateAccessAndRefreshTokens(student._id, student.role);
     student.refreshToken = refreshToken;
     await student.save({ validateBeforeSave: false });
     
@@ -43,7 +40,7 @@ class AuthService {
     
     const organizer = await organizerRepository.create(organizerData);
     organizer.password = undefined;
-    return organizer; // Status is Pending by default
+    return organizer;
   }
 }
 

@@ -43,7 +43,7 @@ const studentSchema = new mongoose.Schema({
         required: [true, 'Please provide a year'],
     },
     profilePicture: {
-        type: String, // Cloudinary URL
+        type: String,
         default: ""
     },
     bio: {
@@ -60,10 +60,9 @@ const studentSchema = new mongoose.Schema({
     }]
 }, { timestamps: true });
 
-studentSchema.pre('save', async function (next) {
-    if (!this.isModified('password')) return next();
+studentSchema.pre('save', async function () {
+    if (!this.isModified('password')) return;
     this.password = await bcrypt.hash(this.password, 12);
-    next();
 });
 
 studentSchema.methods.isPasswordCorrect = async function (candidatePassword) {

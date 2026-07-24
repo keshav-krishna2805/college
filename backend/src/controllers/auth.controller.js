@@ -12,10 +12,6 @@ const generateToken = (id, role) => {
     });
 };
 
-// ==========================================
-// STUDENT AUTHENTICATION
-// ==========================================
-
 export const studentRegister = asyncHandler(async (req, res) => {
     const { name, email, password, phoneNumber, rollNumber, branch, course, year } = req.body;
 
@@ -105,10 +101,6 @@ export const updateStudentProfile = asyncHandler(async (req, res) => {
     await student.save();
     res.status(200).json(new ApiResponse(200, student, 'Student profile updated successfully'));
 });
-
-// ==========================================
-// ORGANISER AUTHENTICATION
-// ==========================================
 
 export const organiserRegister = asyncHandler(async (req, res) => {
     const { name, email, password, phoneNumber, rollNumber, branch, course, year } = req.body;

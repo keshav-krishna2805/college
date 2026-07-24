@@ -8,18 +8,15 @@ process.on('uncaughtException', (err) => {
   process.exit(1);
 });
 
-
 const startServer = async () => {
   try {
     
     await connectDB();
 
-    
     const server = app.listen(config.port, () => {
       console.log(`[Server] App running on port ${config.port} in ${config.env} mode`);
     });
 
-  
     process.on('unhandledRejection', (err) => {
       console.error('UNHANDLED REJECTION!  Shutting down...');
       console.error(err.name, err.message);

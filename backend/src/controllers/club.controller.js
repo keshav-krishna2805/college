@@ -19,7 +19,7 @@ export const getClubById = asyncHandler(async (req, res) => {
 });
 
 export const joinClub = asyncHandler(async (req, res) => {
-    // Only students can join clubs as members
+
     if (req.user.role !== 'student') {
         throw new ApiError(403, 'Only students can join clubs');
     }
@@ -44,7 +44,7 @@ export const joinClub = asyncHandler(async (req, res) => {
 });
 
 export const createClub = asyncHandler(async (req, res) => {
-    // Only organisers can create clubs
+
     if (req.user.role !== 'organiser') {
         throw new ApiError(403, 'Only organisers can create clubs');
     }
@@ -59,7 +59,7 @@ export const createClub = asyncHandler(async (req, res) => {
         name,
         description,
         createdBy: req.user.id,
-        members: [] // Members list is initially empty, filled by students joining
+        members: []
     });
 
     const organiser = await Organiser.findById(req.user.id);
