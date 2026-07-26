@@ -11,6 +11,7 @@ import { errorHandler } from './middlewares/error.middleware.js';
 import { globalLimiter } from './middlewares/rateLimiter.middleware.js';
 import authRoutes from './routes/auth.routes.js';
 import clubRoutes from './routes/club.routes.js';
+import eventRoutes from './routes/event.routes.js';
 
 
 
@@ -39,6 +40,7 @@ app.use('/api', globalLimiter);
 
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/clubs', clubRoutes);
+app.use('/api/v1/events', eventRoutes);
 
 app.use((req, res, next) => {
   res.status(404).json({
