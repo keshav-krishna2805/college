@@ -13,12 +13,12 @@ const clubSchema = new mongoose.Schema({
     },
     createdBy: {
         type: mongoose.Schema.ObjectId,
-        ref: 'Organiser',
+        ref: 'User',
         required: true,
     },
     members: [{
         type: mongoose.Schema.ObjectId,
-        ref: 'Student'
+        ref: 'User'
     }]
 }, { timestamps: true });
 
