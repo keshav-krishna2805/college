@@ -1,0 +1,139 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 1558 >>
+stream
+BT
+/F1 10 Tf
+50 760 Td
+(API Documentation) Tj
+T*
+() Tj
+T*
+(Base URLs:) Tj
+T*
+(- /api/v1/auth) Tj
+T*
+(- /api/v1/clubs) Tj
+T*
+() Tj
+T*
+(Common headers:) Tj
+T*
+(- Content-Type: application/json) Tj
+T*
+(- Content-Type: multipart/form-data for profile image uploads) Tj
+T*
+(- Authorization: Bearer <token>) Tj
+T*
+(- or cookie: accessToken=<token>) Tj
+T*
+() Tj
+T*
+(Auth endpoints:) Tj
+T*
+(POST /api/v1/auth/student/register) Tj
+T*
+(Body: name, email, password, phoneNumber, rollNumber, branch, course, year) Tj
+T*
+() Tj
+T*
+(POST /api/v1/auth/student/login) Tj
+T*
+(Body: email, password) Tj
+T*
+() Tj
+T*
+(GET /api/v1/auth/student/profile) Tj
+T*
+(Auth: required) Tj
+T*
+() Tj
+T*
+(PUT /api/v1/auth/student/profile) Tj
+T*
+(Body: bio \(optional\) and/or profilePicture file) Tj
+T*
+(Auth: required) Tj
+T*
+() Tj
+T*
+(POST /api/v1/auth/organiser/register) Tj
+T*
+(Body: name, email, password, phoneNumber, rollNumber, branch, course, year) Tj
+T*
+() Tj
+T*
+(POST /api/v1/auth/organiser/login) Tj
+T*
+(Body: email, password) Tj
+T*
+() Tj
+T*
+(GET /api/v1/auth/organiser/profile) Tj
+T*
+(Auth: required) Tj
+T*
+() Tj
+T*
+(PUT /api/v1/auth/organiser/profile) Tj
+T*
+(Body: bio \(optional\) and/or profilePicture file) Tj
+T*
+(Auth: required) Tj
+T*
+() Tj
+T*
+(Club endpoints:) Tj
+T*
+(GET /api/v1/clubs) Tj
+T*
+(Auth: required) Tj
+T*
+() Tj
+T*
+(POST /api/v1/clubs) Tj
+T*
+(Body: name, description) Tj
+T*
+(Auth: required, organiser/admin only) Tj
+T*
+() Tj
+T*
+(GET /api/v1/clubs/:id) Tj
+T*
+(Auth: required) Tj
+T*
+() Tj
+T*
+(POST /api/v1/clubs/:id/join) Tj
+T*
+(Auth: required, student only) Tj
+T*
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000001851 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1921
+%%EOF
